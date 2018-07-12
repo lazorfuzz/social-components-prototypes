@@ -52,7 +52,7 @@ const Controls = styled.div`
 
 export const IconButton = styled.p`
     background: inherit;
-    color: white;
+    color: ${props => (props.faved ? 'rgb(37, 228, 122)' : 'white')};
     line-height: 36px;
     text-align: center;
     width: 36px;
@@ -79,7 +79,8 @@ class Card extends React.Component {
     super(props);
     this.state = {
       expanded: false,
-      body: props.short
+      body: props.short,
+      faved: false
     };
   }
 
@@ -89,6 +90,14 @@ class Card extends React.Component {
       return;
     }
     this.setState({ expanded: true, body: this.props.long });
+  }
+
+  handleFave = () => {
+    if (this.state.faved) {
+      this.setState({ faved: false });
+      return;
+    }
+    this.setState({ faved: true });
   }
 
   render() {
@@ -101,7 +110,10 @@ class Card extends React.Component {
             <p style={{ margin: '0' }}>{this.state.body}</p>
           </Info>
           <Controls>
-            <IconButton>
+            <IconButton
+              onClick={this.handleFave}
+              faved={this.state.faved}
+            >
               <i className="material-icons">
                 favorite
               </i>
