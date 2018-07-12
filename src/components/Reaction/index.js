@@ -75,7 +75,7 @@ class Reaction extends Component {
           notification: true,
           payload: `${oldNick} changed their nickname to ${data}`
         });
-        this.setState({ typers: this.state.typers.filter((t) => t !== oldNick) });
+        this.setState({ typers: this.state.typers.filter(t => t !== oldNick) });
         break;
       case 'typingChange':
         if (data.typing && !this.state.typers.includes(peer.nick)) {
@@ -122,7 +122,7 @@ class Reaction extends Component {
       this.setState({ changingNick: true });
       return;
     }
-    const nickMatches = this.webrtc.getPeers().filter((p) => p.nick === this.state.nick);
+    const nickMatches = this.webrtc.getPeers().filter(p => p.nick === this.state.nick);
     if (nickMatches.length > 0) {
       return;
     }
@@ -160,25 +160,23 @@ class Reaction extends Component {
     }, 1000);
   }
 
-  removeTyper = (nick) => this.setState({ typers: this.state.typers.filter((t) => t !== nick) });
+  removeTyper = nick => this.setState({ typers: this.state.typers.filter(t => t !== nick) });
 
-  generateChats = () => this.state.chatLog.map((chat, idx) => {
-    return (
-      <li
-        key={`${idx}`}
-        className="chatItem"
-        >
-        {
+  generateChats = () => this.state.chatLog.map((chat, idx) => (
+    <li
+      key={`${idx}`}
+      className="chatItem"
+    >
+      {
           chat.username &&
           <p><b className="chatUserName">{chat.username}: </b>{`${chat.payload}`}</p>
         }
-        {
+      {
           chat.notification &&
           <p>{chat.payload}</p>
         }
-      </li>
-    );
-  });
+    </li>
+  ));
 
   render() {
     const modBody = (
@@ -205,23 +203,23 @@ class Reaction extends Component {
           <p
             className="changeNick"
             onClick={this.handleNickChange}
-            >
+          >
               Change Nick
           </p>
           {
-            this.state.typers.length > 0 &&
+            this.state.typers.length > 0 && (
             <p
               className="peerCount"
-              >
-                {this.state.typers.length === 1 ? `${this.state.typers[0]}${this.state.typingEllipsis}` : `${this.state.typingEllipsis}`}
+            >
+              {this.state.typers.length === 1 ? `${this.state.typers[0]}${this.state.typingEllipsis}` : `${this.state.typingEllipsis}`}
             </p>
-          }
+            )}
           <p className="peerCount">{this.state.peerCount} {this.state.peerCount > 1 ? 'people' : 'person'} in the room.</p>
         </div>
         <div
           className="messageBox"
-          ref={(el) => this.msgBox = el}
-          >
+          ref={el => this.msgBox = el}
+        >
           {this.generateChats()}
         </div>
         <div className="controls">
@@ -229,7 +227,7 @@ class Reaction extends Component {
             type="text"
             className="textBox"
             placeholder="Type a message..."
-            ref={(t) => this.textBox = t}
+            ref={t => this.textBox = t}
             onChange={this.handleInput}
             value={this.state.message}
             onKeyUp={(e) => {

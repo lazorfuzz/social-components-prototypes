@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import Card from './components/Card';
-import { Button, IconButton } from '../UI';
 
 const Wrapper = styled.div`
   margin: 10px 0;

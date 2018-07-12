@@ -34,7 +34,7 @@ class Review extends React.Component {
 
   handleTitleChange = evt => this.setState({ title: `${evt.target.value}` });
 
-  handleRatingChange = evt => {
+  handleRatingChange = (evt) => {
     console.log(evt.target);
     this.setState({ rating: parseInt(evt.target.getAttribute('data-stars'), 10) });
   }
