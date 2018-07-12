@@ -28,10 +28,8 @@ class WatchParty extends Component {
 
   setup = () => {
     this.checkiOS();
-    if (window.innerWidth > 800) this.roomNameInput.focus();
     if (window.location.hash && window.location.hash.length > 1) {
       this.setState({ roomName: window.location.hash.slice(1) });
-      if (window.innerWidth > 800) this.nickInput.focus();
     }
   }
 
