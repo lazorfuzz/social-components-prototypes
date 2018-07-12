@@ -11,6 +11,9 @@ const Wrapper = styled.div`
   padding: 40px 0 30px 30px;
   text-align: left;
   font-size: 14px;
+  -webkit-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.85);
+  -moz-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.85);
+  box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.85);
 `;
 
 class Footer extends React.Component {

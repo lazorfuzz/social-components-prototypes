@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const Divider = styled.hr`
+  width: 90%;
+  opacity: 0.1;
+`;
+
 export const TextBox = styled.input`
   margin: 5px 0;
   border: 1px solid #323544;
@@ -51,8 +56,8 @@ export const CircleButton = styled.p`
 `;
 
 export const IconButton = styled.p`
-    background: rgb(37, 228, 122);
-    color: white;
+    background: #2cd659;
+    color: rgb(38, 40, 49);
     line-height: 36px;
     text-align: center;
     width: 36px;
@@ -66,11 +71,12 @@ export const IconButton = styled.p`
     -webkit-box-shadow: 1px 1px 3px #000;
     box-shadow: 1px 1px 3px #000;
     cursor: pointer;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     &:hover {
       -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.6);
       -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.6);
       box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.6);
-      color: rgb(38, 40, 49);
+      color: white;
       background: #37e865 radial-gradient(circle, transparent 1%, #33e862 1%) center/15000%;
     }
     &:active {

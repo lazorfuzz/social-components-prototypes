@@ -6,6 +6,7 @@ import Reaction from './components/Reaction';
 import WatchParty from './components/WatchParty';
 import Feed from './components/Feed';
 import Footer from './components/Footer';
+import { Divider } from './components/UI';
 import './App.css';
 
 const Container = styled.div`
@@ -35,6 +36,10 @@ const HeaderBody = styled.div`
   line-height: 1.5;
 `;
 
+const H1 = styled.h1`
+  margin: 1em 0 1em 0;
+`;
+
 class App extends Component {
   render() {
     return (
@@ -48,15 +53,19 @@ class App extends Component {
             </p>
           </HeaderBody>
         </Header>
-        <h2>Social Feed</h2>
+        <H1>Social Feed</H1>
         <Feed />
-        <h2>Recommendations</h2>
+        <Divider />
+        <H1>Recommendations</H1>
         <Recommend />
-        <h2>Watch Party</h2>
+        <Divider />
+        <H1>Watch Party</H1>
         <WatchParty />
-        <h2>Reviews</h2>
+        <Divider />
+        <H1>Reviews</H1>
         <Review />
-        <h2>Reactions</h2>
+        <Divider />
+        <H1>Reactions</H1>
         <Reaction />
         <Footer />
       </Container>

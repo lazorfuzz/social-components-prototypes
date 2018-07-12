@@ -5,7 +5,7 @@ import { Button, List, ListItem } from '../UI';
 import './Recommend.css';
 
 const Wrapper = styled.div`
-  margin: 10px 0;
+  margin: 30px 0;
 `;
 
 class Recommend extends React.Component {

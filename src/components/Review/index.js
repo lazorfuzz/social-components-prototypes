@@ -8,7 +8,7 @@ import { Button, IconButton, TextBox } from '../UI';
 import './Review.css';
 
 const Wrapper = styled.div`
-  margin: 10px 0;
+  margin: 30px 0;
   display: flex;
   flex-flow: column;
   align-items: flex-start;
