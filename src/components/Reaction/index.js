@@ -28,7 +28,6 @@ class Reaction extends Component {
       nick: this.state.nick
     });
 
-    this.textBox.focus();
     this.createIntervals();
 
     this.webrtc.on('readyToCall', () => this.webrtc.joinRoom(this.state.room));
