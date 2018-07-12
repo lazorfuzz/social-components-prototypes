@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   flex-flow: row;
   max-width: 85vw;
   margin: 1em 0 3em 0;
-  background: white;
+  background: rgb(49, 52, 64);
   border-radius: 5px;
   height: ${props => (props.expanded ? 'auto' : '180px')}
   transition: all 0.1s ease-in;
@@ -32,8 +32,7 @@ const Info = styled.div`
   display: flex;
   flex-flow: column;
   text-align: left;
-  background: white;
-  color: #333;
+  color: #e0e0e0;
   padding: 10px;
   min-height: 134px;
   overflow-y: hidden;
@@ -47,14 +46,13 @@ const Controls = styled.div`
   position: relative;
   bottom: 0;
   flex-flow: row;
-  background: white;
   border-bottom-right-radius: 5px;
   min-height: 46px;
 `;
 
 export const IconButton = styled.p`
-    background: white;
-    color: rgba(0, 0, 0, 0.54);
+    background: inherit;
+    color: white;
     line-height: 36px;
     text-align: center;
     width: 36px;
