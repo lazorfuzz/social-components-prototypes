@@ -1,0 +1,9 @@
+.modBody {
+  width: 600px;
+  max-width: 75%;
+  position: relative;
+  margin: 10% auto;
+  padding: 21px 20px 13px 20px;
+  border-radius: 5px;
+  background: rgb(38, 40, 49);
+}

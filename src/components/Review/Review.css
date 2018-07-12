@@ -1,0 +1,18 @@
+.mde-text {
+  background: #4f5560;
+}
+
+.react-mde {
+  border: 1px solid #323544;
+  border-radius: 5px;
+}
+
+.ratingContainer {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+
+.mde-preview-content {
+  word-wrap: break-word;
+}

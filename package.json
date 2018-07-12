@@ -1,0 +1,30 @@
+{
+  "name": "social-components",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "clipboard-copy": "^2.0.0",
+    "draft-js": "^0.10.5",
+    "liowebrtc": "^0.1.14",
+    "react": "^16.4.1",
+    "react-color": "^2.14.1",
+    "react-dom": "^16.4.1",
+    "react-mde": "^5.7.0",
+    "react-scripts": "1.1.4",
+    "showdown": "^1.8.6",
+    "styled-components": "^3.3.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "17.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1"
+  }
+}

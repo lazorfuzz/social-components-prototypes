@@ -1,0 +1,129 @@
+input:focus {
+  outline: none;
+}
+
+.changeNick {
+  text-decoration: none;
+  color: rgb(37, 228, 122);
+}
+
+.App {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  align-items: center;
+}
+
+.header {
+  color: white;
+  text-align: center;
+  width: 800px;
+  max-width: 90%;
+  line-height: 30px;
+}
+
+.changeNick {
+  font-size: 13px;
+  line-height: 1px;
+  cursor: pointer;
+}
+
+.peerCount {
+  text-align: right;
+  font-size: 13px;
+  line-height: 1px;
+}
+
+.msgBoxTop {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  width: 800px;
+  max-width: 90%;
+  margin: 10px 0 0 0;
+  align-items: flex-end;
+}
+
+.messageBox {
+  width: 800px;
+  max-width: 85%;
+  height: 300px;
+  max-height: 32vh;
+  border: 1px solid #333;
+  border-radius: 10px;
+  margin: 0 0 1em 0;
+  padding: 5px 10px 0 20px;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: left;
+  overflow-y: auto;
+  word-wrap: break-word;
+  -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+  background-color: #444b4c;
+}
+
+.chatItem, .msgEnd {
+  list-style: none;
+}
+
+.chatUserName {
+  color: white;
+}
+
+.msgEnd {
+  height: 50px;
+}
+
+.controls {
+  flex-flow: row;
+  width: 800px;
+  max-width: 90%;
+}
+
+.textBox {
+  width: 100%;
+  max-width: 100%;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 0 1em 1em -10px;
+  line-height: 24px;
+  font-size: 18px;
+  background-color: transparent;
+  color: rgb(37, 228, 122);
+}
+
+.nickBtn:hover {
+  background: #ffb36d;
+}
+
+.nickBox {
+  line-height: 20px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #d3efff;
+  width: 300px;
+  max-width: 80%;
+  border: none;
+  border-bottom: 1px solid #d3efff;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.modal {
+  font-weight: lighter;
+  background-color: #444b4c;
+  width: 400px;
+  max-width: 90%;
+}
+
+.modal h3 {
+  font-weight: lighter;
+  color: white;
+}
