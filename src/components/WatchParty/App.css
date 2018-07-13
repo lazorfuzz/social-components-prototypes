@@ -94,7 +94,8 @@
 .colorPopOver {
   position: absolute;
   z-index: 10;
-  right: 10vw;
+  right: 23vw;
+  top: 1440px;
 }
 
 .colorCover {

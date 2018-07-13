@@ -38,14 +38,6 @@ class Party extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const pc = prevProps.windowColor;
-    const c = this.props.windowColor;
-    if (pc.r !== c.r || pc.g !== c.g || pc.b !== c.b) {
-      this.webrtc.shout('windowColor', c);
-    }
-  }
-
   addListeners = () => {
     this.webrtc.on('videoAdded', this.addVideo);
     this.webrtc.on('videoRemoved', this.removeVideo);
@@ -56,7 +48,16 @@ class Party extends Component {
     this.webrtc.on('unmute', this.handlePeerUnmute);
     this.webrtc.on('receivedPeerData', this.handlePeerData);
     this.webrtc.on('channelOpen', this.handleChannelOpen);
-    this.webrtc.on('localMediaError', (e) => alert(`Local Media Error\n\n${e.toString()}\n\nDoes your browser allow camera and mic access?`));
+    this.webrtc.on('localMediaError', e => alert(`Local Media Error\n\n${e.toString()}\n\nDoes your browser allow camera and mic access?`));
+  }
+
+
+  componentDidUpdate(prevProps) {
+    const pc = prevProps.windowColor;
+    const c = this.props.windowColor;
+    if (pc.r !== c.r || pc.g !== c.g || pc.b !== c.b) {
+      this.webrtc.shout('windowColor', c);
+    }
   }
 
   addVideo = (stream, peer) => {
@@ -125,13 +126,13 @@ class Party extends Component {
     this.setOverlayTimeout(e.target);
   }
 
-  setOverlayTimeout = (tgt) => tgt.overlayTimeout = setTimeout(() => {
-        if (!tgt || this.props.iOS) return;
-        tgt.style.opacity = 0;
-        for (const child of tgt.children) {
-          child.style.visibility = 'hidden';
-        }
-      }, 1000);
+  setOverlayTimeout = tgt => tgt.overlayTimeout = setTimeout(() => {
+    if (!tgt || this.props.iOS) return;
+    tgt.style.opacity = 0;
+    for (const child of tgt.children) {
+      child.style.visibility = 'hidden';
+    }
+  }, 1000);
 
   readyToCall = () => {
     // Starts the process of joining a room.
@@ -141,34 +142,35 @@ class Party extends Component {
   }
 
   // Show fellow peers in the room
-  generateRemotes = () => this.state.peers.map((p) => (
+  generateRemotes = () => this.state.peers.map(p => (
     <div key={p.id}>
       <div
         className="vidContainer"
         style={{ borderColor: p.bColor }}
-        id={/* The video container needs a special id */ `${this.webrtc.getContainerId(p)}`}>
+        id={/* The video container needs a special id */ `${this.webrtc.getContainerId(p)}`}
+      >
         <video
           // Important: The video element needs both an id and ref
           id={this.webrtc.getId(p)}
-          ref={(v) => this.remoteVideos[p.id] = v}
+          ref={v => this.remoteVideos[p.id] = v}
           playsInline
-          />
+        />
         <div
           className={`overlay ${this.state.mutedPeerIds.includes(p.id) ? 'visible' : ''}`}
           onMouseMove={this.handleOverlayHover}
           onTouchEnd={this.handleOverlayHover}
-          >
-            <div className="overlayBottom">
-              {
+        >
+          <div className="overlayBottom">
+            {
                 this.state.mutedPeerIds.includes(p.id) &&
                 <i className="material-icons">volume_off</i>
               }
-            </div>
+          </div>
         </div>
       </div>
-        <p>{p.nick}</p>
+      <p>{p.nick}</p>
     </div>
-    ));
+  ));
 
   disconnect = () => {
     this.webrtc.stopLocalVideo();
@@ -186,13 +188,13 @@ class Party extends Component {
     return (
       <div
         className={this.state.inRoom ? 'inRoom' : 'wrapper'}
-        ref={(e) => this.wrapper = e}
-        >
+        ref={e => this.wrapper = e}
+      >
         <div>
           <div
             className="vidContainer"
             style={{ borderColor: `rgba(${windowColor.r}, ${windowColor.g}, ${windowColor.b}, ${windowColor.a})` }}
-            >
+          >
             <video
               // Important: The local video element needs to have a ref
               ref={(vid) => { this.localVid = vid; }}
@@ -203,29 +205,29 @@ class Party extends Component {
               className={`overlay ${this.state.muted || this.props.iOS ? 'visible' : ''}`}
               onMouseMove={this.handleOverlayHover}
               onTouchEnd={this.handleOverlayHover}
-              ref={(el) => this.localOverlay = el}
-              >
-                <div className="overlayMiddle">
-                  {
-                    this.props.iOS &&
+              ref={el => this.localOverlay = el}
+            >
+              <div className="overlayMiddle">
+                {
+                    this.props.iOS && (
                     <IconButton
                       onClick={this.handleVideoStart}
-                      >
-                        <i className="material-icons">video_call</i>
+                    >
+                      <i className="material-icons">video_call</i>
                     </IconButton>
-                  }
-                  {
-                    !this.props.iOS &&
+                    )}
+                {
+                    !this.props.iOS && (
                     <IconButton
                       onClick={this.handleSelfMute}
-                      >
-                        <i className="material-icons">{this.state.muted ? 'volume_off' : 'volume_up'}</i>
+                    >
+                      <i className="material-icons">{this.state.muted ? 'volume_off' : 'volume_up'}</i>
                     </IconButton>
-                  }
-                </div>
+                    )}
+              </div>
             </div>
           </div>
-            <p>{this.state.nick}</p>
+          <p>{this.state.nick}</p>
         </div>
         {this.generateRemotes()}
       </div>
