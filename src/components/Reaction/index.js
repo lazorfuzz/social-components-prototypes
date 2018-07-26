@@ -192,6 +192,7 @@ class Reaction extends Component {
         <input
           type="text"
           className="wpTextBox"
+          style={{ width: '100%' }}
           onChange={(evt) => {
             this.setState({ nick: evt.target.value });
           }}
