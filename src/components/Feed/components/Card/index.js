@@ -101,54 +101,103 @@ class Card extends React.Component {
   }
 
   render() {
+    const { expanded, body, faved } = this.state;
     return (
-      <Wrapper expanded={this.state.expanded}>
+      <Wrapper expanded={expanded}>
         <Poster src={this.props.img} />
         <InfoContainer>
+          {
+            expanded && (
+              <Controls>
+                <IconButton
+                  onClick={this.handleFave}
+                  faved={faved}
+                >
+                  <i className="material-icons">
+                    favorite
+                  </i>
+                </IconButton>
+                <IconButton>
+                  <i className="material-icons">
+                    share
+                  </i>
+                </IconButton>
+                <IconButton>
+                  <i className="material-icons">
+                    person
+                  </i>
+                </IconButton>
+                {
+                  this.props.long && (
+                  <IconButton
+                    style={{ marginLeft: 'auto' }}
+                    onClick={this.handleExpand}
+                  >
+                    {
+                      !expanded && (
+                      <i className="material-icons">
+                        expand_more
+                      </i>
+                      )}
+                    {
+                      expanded && (
+                      <i className="material-icons">
+                        expand_less
+                      </i>
+                      )}
+                  </IconButton>
+                  )}
+              </Controls>
+            )
+          }
           <Info>
             <h4 style={{ margin: '0 0 5px 0' }}>{this.props.title}</h4>
-            <p style={{ margin: '0' }}>{this.state.body}</p>
+            <p style={{ margin: '0' }}>{body}</p>
           </Info>
-          <Controls>
-            <IconButton
-              onClick={this.handleFave}
-              faved={this.state.faved}
-            >
-              <i className="material-icons">
-                favorite
-              </i>
-            </IconButton>
-            <IconButton>
-              <i className="material-icons">
-                share
-              </i>
-            </IconButton>
-            <IconButton>
-              <i className="material-icons">
-                person
-              </i>
-            </IconButton>
-            {
-              this.props.long && (
-              <IconButton
-                style={{ marginLeft: 'auto' }}
-                onClick={this.handleExpand}
-              >
-                {
-                  !this.state.expanded && (
+          {
+            !expanded && (
+              <Controls>
+                <IconButton
+                  onClick={this.handleFave}
+                  faved={faved}
+                >
                   <i className="material-icons">
-                    expand_more
+                    favorite
                   </i>
-                  )}
-                {
-                  this.state.expanded && (
+                </IconButton>
+                <IconButton>
                   <i className="material-icons">
-                    expand_less
+                    share
                   </i>
+                </IconButton>
+                <IconButton>
+                  <i className="material-icons">
+                    person
+                  </i>
+                </IconButton>
+                {
+                  this.props.long && (
+                  <IconButton
+                    style={{ marginLeft: 'auto' }}
+                    onClick={this.handleExpand}
+                  >
+                    {
+                      !expanded && (
+                      <i className="material-icons">
+                        expand_more
+                      </i>
+                      )}
+                    {
+                      expanded && (
+                      <i className="material-icons">
+                        expand_less
+                      </i>
+                      )}
+                  </IconButton>
                   )}
-              </IconButton>
-              )}
-          </Controls>
+              </Controls>
+            )
+          }
         </InfoContainer>
       </Wrapper>
     );

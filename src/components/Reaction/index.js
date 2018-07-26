@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LioWebRTC from 'liowebrtc';
 import './Reaction.css';
 import LioModal from '../LioModal';
+import { Button } from '../UI';
 
 class Reaction extends Component {
   constructor() {
@@ -116,6 +117,14 @@ class Reaction extends Component {
     });
   }
 
+  handleEmojiSend = () => {
+    this.msgBox.scrollTop = this.msgBox.scrollHeight;
+    const chatObj = {
+      username: this.state.nick,
+      payload: this.state.message
+    };
+  }
+
   handleNickChange = () => {
     if (!this.state.changingNick) {
       this.setState({ changingNick: true });
@@ -193,6 +202,11 @@ class Reaction extends Component {
             }
           }}
         />
+        <Button
+          onClick={this.handleNickChange}
+        >
+          Submit
+        </Button>
       </div>
     );
     return (
@@ -221,6 +235,14 @@ class Reaction extends Component {
         >
           {this.generateChats()}
         </div>
+        <div className="emojiBar">
+          <span role="img" aria-label="laughing emoji">😂</span>
+          <span role="img" aria-label="lmao emoji">🤣</span>
+          <span role="img" aria-label="heart emoji">😍</span>
+          <span role="img" aria-label="puke emoji">🤮</span>
+          <span role="img" aria-label="eyeroll emoji">🙄</span>
+          <span role="img" aria-label="exasperated emoji">😤</span>
+        </div>
         <div className="controls">
           <input
             type="text"
@@ -239,7 +261,9 @@ class Reaction extends Component {
 
         <LioModal
           open={this.state.changingNick}
-          onRequestClose={() => this.setState({ changingNick: false })}
+          onRequestClose={(evt) => {
+            this.setState({ changingNick: false });
+          }}
           title="Change Your Nickname"
           body={modBody}
         />

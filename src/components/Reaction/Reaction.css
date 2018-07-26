@@ -82,6 +82,24 @@ input:focus {
   max-width: 90%;
 }
 
+.emojiBar {
+  font-size: 40px;
+  max-width: 100%;
+  display: flex;
+  flex-flow: row;
+}
+
+.emojiBar span {
+  margin-left: 40px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.emojiBar span:hover {
+  background: rgba(255,255,255, 0.2);
+}
+
 .textBox {
   width: 100%;
   max-width: 100%;

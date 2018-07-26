@@ -46,7 +46,7 @@ class App extends Component {
       <Container>
         <Header>
           <HeaderBody>
-            <h1>IST 331 Social Components Prototypes</h1>
+            <h1>Revised IST 331 Prototypes</h1>
             <p>This is the submission for the IST 331 high-fidelity prototypes assignment.
               All components were built using React, with CSS written from scratch. The components
               with working p2p demos are powered by <a href="https://github.com/lazorfuzz/liowebrtc" rel="noopener noreferrer" target="_blank">LioWebRTC.</a>

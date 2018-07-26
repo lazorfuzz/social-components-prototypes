@@ -9,7 +9,7 @@ const ModalDialog = styled.div`
     bottom: 0;
     left: 0;
     background: rgba(0, 0, 0, 0.8);
-    z-index: 99999;
+    z-index: 50;
     transition: all 0.4s cubic-bezier(.24,.42,.92,.29);
     display: ${props => (props.open ? '' : 'none')};
     overflow-y: scroll;
@@ -44,6 +44,12 @@ const Title = styled.h2`
 `;
 
 class LioModal extends Component {
+
+  handleClose = (evt) => {
+    if (evt.target.getAttribute('class').indexOf('modContainer') === -1) return;
+    this.props.onRequestClose();
+  }
+
   render() {
     const {
       open,
@@ -52,8 +58,12 @@ class LioModal extends Component {
       body
     } = this.props;
     return (
-      <ModalDialog open={open}>
-        <div className="modBody">
+      <ModalDialog
+        open={open}
+        onClick={this.handleClose}
+        className="modContainer"
+      >
+        <div className="modBody" onClick={(evt) => evt.preventDefault()}>
           <Close
             onClick={this.props.onRequestClose}
           >
